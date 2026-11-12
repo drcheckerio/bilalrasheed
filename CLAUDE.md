@@ -6,7 +6,7 @@ Portfolio and blog for Bilal Rasheed (SEO specialist). Static site, built by `bu
 - `src/data.js`: all content (services, stats, case studies, FAQs, nav) and site settings.
 - `src/layout.js`: shared head, header, menu, footer, icon sprite.
 - `src/pages.js`: page bodies (home, services, case-studies, about, blog, contact, post, 404).
-- `assets/`: `site.css`, `site.js`, `logo.webp`, `bilal.webp`, `favicon.svg`.
+- `assets/`: `site.css`, `site.js`, `logo.webp`, `bilal.webp`, `favicon.png`.
 - `posts/*.md`: blog posts. File name is the URL slug.
 - `dist/`: build output, not committed.
 
@@ -36,4 +36,4 @@ Markdown body. Start at ## for headings (the title is the H1).
 - Case studies in `src/data.js` are sample data and show a "Sample" tag. Remove the tag only when replaced with real client results.
 - No fabricated testimonials.
 - Noindex is ON until the owner says the site is finished. To launch: set `indexable: true` in `src/data.js` AND delete the `X-Robots-Tag` header block in `vercel.json`. Never block crawling in robots.txt as a substitute.
-- Contact form delivery needs a Web3Forms key in `site.formKey` (`src/data.js`).
+- The contact form and the hero "Audit my website" form both need a Web3Forms key in `site.formKey` (`src/data.js`).

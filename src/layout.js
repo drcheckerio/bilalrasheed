@@ -46,6 +46,10 @@ const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden=
 <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.500 5l-3 14"/></symbol>
 <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.500l2.200 11h10.600L20.500 7H7"/><circle cx="9" cy="19" r="1.500"/><circle cx="17" cy="19" r="1.500"/></symbol>
 <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11.500 12 4l8 7.500V19a2 2 0 0 1-2 2h-3v-6h-6v6H6a2 2 0 0 1-2-2v-7.500Z"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.500 11a6.500 6.500 0 0 0 13 0M12 17.500V21"/></symbol>
+<symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.500"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
 </defs></svg>`;
 
@@ -81,7 +85,8 @@ ${robots}<link rel="canonical" href="${canonical}">
 <meta property="og:type" content="${type}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${site.domain}/assets/bilal.webp">
-<link rel="icon" href="${asset("favicon.svg")}" type="image/svg+xml">
+<link rel="icon" href="${asset("favicon.png")}" type="image/png">
+<script>if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.className="js";addEventListener("load",function(){setTimeout(function(){if(!window.__rv)document.documentElement.className=""},2000)})}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -93,12 +98,15 @@ ${sprite}
 <header class="top" id="top-bar">
   <div class="wrap">
     <div class="bar">
-      <a class="logo" href="${link("")}" aria-label="${site.name} home"><img src="${asset("logo.webp")}" alt="${site.name}" width="600" height="83"></a>
+      <a class="logo" href="${link("")}" aria-label="${site.name} home"><img src="${asset("logo.webp")}" alt="${site.name}" width="720" height="136"></a>
       <div class="search" role="search">
         <div class="search-box">
           ${ico("i-search")}
           <input id="site-search" type="text" autocomplete="off" spellcheck="false" aria-label="Search this site" placeholder="Bilal Rasheed, SEO Specialist" aria-controls="sugg" aria-expanded="false">
-          <button class="search-go" id="search-go" type="button" aria-label="Go to the top result">${ico("i-arrow")}</button>
+          <button class="s-btn s-clear" id="search-clear" type="button" aria-label="Clear search" hidden>${ico("i-x")}</button>
+          <span class="s-div" aria-hidden="true"></span>
+          <button class="s-btn" id="search-mic" type="button" aria-label="Search by voice" title="Search by voice">${ico("i-mic")}</button>
+          <a class="s-btn" id="search-scan" href="${link("#audit")}" aria-label="Scan my website" title="Scan my website">${ico("i-scan")}</a>
         </div>
         <div class="sugg" id="sugg" role="listbox"></div>
       </div>
@@ -114,10 +122,10 @@ ${body}
 <footer>
   <div class="wrap foot">
     <div class="foot-brand">
-      <a class="logo logo-chip" href="${link("")}"><img src="${asset("logo.webp")}" alt="${site.name}" width="600" height="83" loading="lazy"></a>
+      <a class="logo logo-chip" href="${link("")}"><img src="${asset("logo.webp")}" alt="${site.name}" width="720" height="136" loading="lazy"></a>
       <p>SEO, link building and authority growth for brands that want to be found.</p>
     </div>
-    <nav aria-label="Footer"><a href="${link("")}">Home</a>${nav.map((n) => `<a href="${link(n.href)}">${n.label}</a>`).join("")}</nav>
+    <nav aria-label="Footer">${nav.map((n) => `<a href="${link(n.href)}">${n.label}</a>`).join("")}</nav>
     <a class="foot-mail" href="${link("contact")}">${ico("i-mail")}${site.email}</a>
   </div>
   <div class="wrap foot-base"><small>© ${new Date().getFullYear()} BilalRasheed.com. All rights reserved.</small><small>SEO · GEO · AEO · Link Building · Digital PR</small></div>

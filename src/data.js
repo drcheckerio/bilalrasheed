@@ -13,11 +13,12 @@ exports.site = {
 };
 
 exports.nav = [
-  { label: "Services", href: "services", icon: "i-layers", tone: "blue" },
-  { label: "Case Studies", href: "case-studies", icon: "i-bars", tone: "red" },
+  { label: "Home", href: "", icon: "i-home", tone: "blue" },
+  { label: "Services", href: "services", icon: "i-layers", tone: "violet" },
+  { label: "Case Studies", href: "case-studies", icon: "i-bars", tone: "green" },
   { label: "About", href: "about", icon: "i-user", tone: "yellow" },
-  { label: "Blog", href: "blog", icon: "i-pen", tone: "green" },
-  { label: "Contact", href: "contact", icon: "i-mail", tone: "violet" },
+  { label: "Blog", href: "blog", icon: "i-pen", tone: "red" },
+  { label: "Contact", href: "contact", icon: "i-mail", tone: "blue" },
 ];
 
 exports.stats = [

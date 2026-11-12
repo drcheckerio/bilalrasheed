@@ -55,9 +55,19 @@ exports.home = (ctx) => {
     <p class="pill rv"><i></i>Available for new SEO projects</p>
     <h1 class="rv" style="--i:1">SEO Specialist &amp; Link Building <span class="hl">Expert<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9C50 2 120 1 197 7"/></svg></span></h1>
     <p class="lede rv" style="--i:2">I'm Bilal Rasheed. For 7+ years I've helped websites earn the rankings, links and authority that bring in customers from Google and AI search.</p>
-    <div class="cta rv" style="--i:3">
-      <a class="btn btn-p" href="${link("case-studies")}">${ico("i-trend")}View case studies</a>
-      <a class="btn btn-s" href="${link("services")}"><span class="play"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l8 5-8 5z"/></svg></span>My services</a>
+    <form class="audit rv" id="audit" style="--i:3" novalidate>
+      <p class="audit-head">${ico("i-scan")}<strong>Get a website audit</strong><span>Enter your site and I'll email you what to fix.</span></p>
+      <div class="audit-row">
+        <label><span>Website</span><input id="a-site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourwebsite.com"></label>
+        <label><span>Email</span><input id="a-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></label>
+        <input class="hp" id="a-hp" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-p" type="submit" id="a-send">${ico("i-search")}<span>Audit my website</span></button>
+      </div>
+      <p class="note" id="a-note" role="status"></p>
+    </form>
+    <div class="cta rv" style="--i:4">
+      <a class="more" href="${link("case-studies")}">View case studies${ico("i-arrow")}</a>
+      <a class="more" href="${link("services")}">My services${ico("i-arrow")}</a>
     </div>
   </div>
   <div class="scene rv" id="scene" style="--i:2">
@@ -212,5 +222,5 @@ ${cta(link)}`;
 exports.notFound = (ctx) => {
   const { link } = helpers(ctx);
   const body = `${pageHero(["404"], `No results for this <span class="hl">page</span>`, "The page you searched for isn't here. Try the search bar above, or head back home.")}<div class="wrap" style="padding-bottom:80px"><a class="btn btn-p" href="${link("")}">Back to home${ico("i-arrow")}</a></div>`;
-  return { path: "404", file: "404.html", title: "Page not found", description: "Page not found.", active: "", body };
+  return { path: "404", file: "404.html", title: "Page not found", description: "Page not found.", active: "none", body };
 };
