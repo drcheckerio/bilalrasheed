@@ -57,19 +57,9 @@ exports.home = (ctx) => {
     <p class="pill rv"><i></i>Available for new SEO projects</p>
     <h1 class="rv" style="--i:1">SEO Specialist &amp; Link Building <span class="hl">Expert<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9C50 2 120 1 197 7"/></svg></span></h1>
     <p class="lede rv" style="--i:2">I'm Bilal Rasheed. For 7+ years I've helped websites earn the rankings, links and authority that bring in customers from Google and AI search.</p>
-    <form class="audit rv" id="audit" style="--i:3" novalidate>
-      <p class="audit-head">${ico("i-scan")}<strong>Get a website audit</strong><span>Enter your site and I'll email you what to fix.</span></p>
-      <div class="audit-row">
-        <label><span>Website</span><input id="a-site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourwebsite.com"></label>
-        <label><span>Email</span><input id="a-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></label>
-        <input class="hp" id="a-hp" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-p" type="submit" id="a-send">${ico("i-search")}<span>Audit my website</span></button>
-      </div>
-      <p class="note" id="a-note" role="status"></p>
-    </form>
-    <div class="cta rv" style="--i:4">
-      <a class="more" href="${link("case-studies")}">View case studies${ico("i-arrow")}</a>
-      <a class="more" href="${link("services")}">My services${ico("i-arrow")}</a>
+    <div class="cta rv" style="--i:3">
+      <a class="btn btn-p" href="#audit" id="hero-audit">${ico("i-scan")}Audit my website</a>
+      <a class="btn btn-s" href="${link("services")}"><span class="play"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l8 5-8 5z"/></svg></span>My services</a>
     </div>
   </div>
   <div class="scene rv" id="scene" style="--i:2">
@@ -85,12 +75,26 @@ exports.home = (ctx) => {
     </div>
   </div>
 </div>
-<div class="wrap stats">${d.stats.map((s, i) => `<div class="card stat tilt rv" style="--i:${i}"><span class="tile3d">${ico(s.icon)}</span><div><strong data-count="${s.n}" data-suffix="${s.suffix}">${num(s.n)}${s.suffix}</strong><span>${s.label}</span></div></div>`).join("")}</div>
 </section>
 
+<section class="audit-sec"><div class="wrap">
+  <form class="audit rv" id="audit" novalidate>
+    <span class="band-ico">${ico("i-scan")}</span>
+    <div class="audit-copy"><h2>Get a website <span class="hl">audit</span></h2><p>Enter your site and I'll email you what to fix.</p></div>
+    <div class="audit-row">
+      <label><span>Website</span><input id="a-site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourwebsite.com"></label>
+      <label><span>Email</span><input id="a-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></label>
+      <input class="hp" id="a-hp" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-p" type="submit" id="a-send">${ico("i-search")}<span>Audit my website</span></button>
+    </div>
+    <p class="note" id="a-note" role="status"></p>
+  </form>
+</div></section>
+
 <section class="sec"><div class="wrap">
-  ${head(`My <span class="hl">SEO</span> services`, "From classic SEO to AI search and every kind of backlink.", more(link("services"), "View all services"))}
+  <div class="sec-head center rv"><div><span class="eyebrow">What I do</span><h2>My <span class="hl">SEO</span> Services</h2><p>From classic SEO to AI search and every kind of backlink.</p></div></div>
   <div class="grid3">${featured.map(([s, g], i) => serviceCard(s, g.tone, i, link("services#" + g.id))).join("")}</div>
+  <div class="center-row rv">${more(link("services"), "View all services")}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -115,7 +119,14 @@ ${ctx.posts.length ? `<section class="sec"><div class="wrap">
 
 <section class="sec"><div class="wrap">
   ${head(`People also <span class="hl">ask</span>`)}
-  ${faq(d.faqs.slice(0, 4))}
+  <div class="faq-grid">${faq(d.faqs.slice(0, 4))}
+    <aside class="card ask rv" style="--i:1">
+      <div class="ask-top"><img src="${asset("bilal.webp")}" alt="" width="847" height="1200" loading="lazy"><div><strong>Still have a question?</strong><small>Ask me directly. I reply myself.</small></div></div>
+      <ul class="c-list">${["A straight answer about your site", "No sales call needed", "Reply by email"].map((t) => `<li>${tick}${t}</li>`).join("")}</ul>
+      <a class="btn btn-p" href="${link("contact")}">${ico("i-send")}Ask your question</a>
+      <div class="ask-foot"><small>Or find me on</small>${socialRow("socials-sm")}</div>
+    </aside>
+  </div>
 </div></section>
 ${cta(link)}`;
   const schema = `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Person", name: d.site.name, jobTitle: d.site.tagline, url: d.site.domain + "/", image: d.site.domain + "/assets/bilal.webp", knowsAbout: d.skills, sameAs: d.socials.map((s) => s.url) })}</script>\n`;
@@ -162,8 +173,8 @@ ${pageHero(["about"], `Hi, I'm <span class="hl">Bilal Rasheed</span>`, "An SEO s
       <div><dt>Focus</dt><dd>Link building, off-page SEO, digital PR</dd></div>
       <div><dt>Works on</dt><dd>One-off projects and monthly campaigns</dd></div>
       <div><dt>Email</dt><dd>${d.site.email}</dd></div>
-      <div class="fact-wide"><dt>Find me on</dt><dd>${socialRow("socials-sm")}</dd></div>
-    </dl>
+      </dl>
+    <div class="find"><strong>Find me on</strong><div class="soc-pills">${d.socials.map((s) => `<a class="soc-pill" href="${s.url}" target="_blank" rel="me noopener"><span class="soc s-${s.tone}"><b>${s.mark}</b></span>${s.name}</a>`).join("")}</div></div>
   </aside>
   <div class="about-main">
     <div class="card bio rv" style="--i:1">
@@ -194,7 +205,7 @@ ${pageHero(["contact"], `Let's grow your website <span class="hl">together</span
   ${form()}
 </div></div></section>
 <section class="sec"><div class="wrap">${head(`My official <span class="hl">accounts</span>`, "Message me wherever you already are.")}${socialCards()}</div></section>
-<section class="sec"><div class="wrap">${head(`Before you <span class="hl">write</span>`)}${faq(d.faqs.slice(3).concat(d.faqs.slice(0, 2)))}</div></section>`;
+<section class="sec"><div class="wrap">${head(`Before you <span class="hl">write</span>`)}<div class="faq-cols">${faq(d.faqs.slice(3).concat(d.faqs.slice(0, 2)))}</div></div></section>`;
   return { path: "contact", file: "contact.html", title: "Contact", description: "Contact Bilal Rasheed about SEO, link building, digital PR and authority growth.", active: "contact", body };
 };
 

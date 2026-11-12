@@ -144,11 +144,11 @@
   });
 
   /* scan button: jump to the audit form */
-  var scan=$("#search-scan"), audit=$("#audit");
-  if(scan&&audit) scan.addEventListener("click",function(e){
+  var audit=$("#audit");
+  if(audit) [$("#search-scan"),$("#hero-audit")].forEach(function(b){ if(b) b.addEventListener("click",function(e){
     e.preventDefault(); audit.scrollIntoView({behavior:calm?"auto":"smooth",block:"center"});
     setTimeout(function(){$("#a-site").focus({preventScroll:true})},calm?0:500);
-  });
+  }); });
   if(audit&&location.hash==="#audit") setTimeout(function(){$("#a-site").focus({preventScroll:true})},600);
 
   /* placeholder types out searches while the bar is idle */
