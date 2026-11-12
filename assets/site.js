@@ -165,6 +165,31 @@
   function stopType(){ clearTimeout(timer); timer=null; input.placeholder="Search services, case studies, blog"; pi=0;ci=0;dir=1; }
   startType();
 
+  /* FAQ: one answer open at a time, opening and closing smoothly */
+  $$(".faq").forEach(function(group){
+    var all=$$("details",group);
+    function slide(d,open){
+      var sum=d.querySelector("summary");
+      if(d._anim)d._anim.cancel();
+      if(calm||!d.animate){ d.open=open; return; }
+      var from=d.offsetHeight;
+      if(open)d.open=true;
+      var to=open?d.scrollHeight:sum.offsetHeight;
+      d.style.overflow="hidden";
+      d._anim=d.animate([{height:from+"px"},{height:to+"px"}],{duration:320,easing:"cubic-bezier(.2,.8,.2,1)"});
+      d._anim.onfinish=function(){ d._anim=null; d.style.overflow=""; if(!open)d.open=false; };
+      d._anim.oncancel=function(){ d._anim=null; d.style.overflow=""; };
+    }
+    all.forEach(function(d){
+      d.querySelector("summary").addEventListener("click",function(e){
+        e.preventDefault();
+        var opening=!d.open||(d._anim&&d._closing);
+        all.forEach(function(o){ if(o!==d&&o.open){o._closing=true;slide(o,false)} });
+        d._closing=!opening; slide(d,opening);
+      });
+    });
+  });
+
   /* copy email */
   var copy=$("#copy");
   if(copy) copy.addEventListener("click",function(){

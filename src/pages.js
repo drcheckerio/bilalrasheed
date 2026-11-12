@@ -80,7 +80,7 @@ exports.home = (ctx) => {
 <section class="audit-sec"><div class="wrap">
   <form class="audit rv" id="audit" novalidate>
     <span class="band-ico">${ico("i-scan")}</span>
-    <div class="audit-copy"><h2>Get a website <span class="hl">audit</span></h2><p>Enter your site and I'll email you what to fix.</p></div>
+    <div class="audit-copy"><span class="free-tag">100% Free</span><h2>Free Website <span class="hl">Audit</span></h2><p>Find out what's holding your rankings back. Send your site and I'll email you the fixes.</p></div>
     <div class="audit-row">
       <label><span>Website</span><input id="a-site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourwebsite.com"></label>
       <label><span>Email</span><input id="a-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></label>
@@ -106,7 +106,8 @@ exports.home = (ctx) => {
   <div class="card me rv tilt"><img src="${asset("bilal.webp")}" alt="" width="847" height="1200" loading="lazy"></div>
   <div class="rv" style="--i:1">
     <h2>About <span class="hl">me</span></h2>
-    <p class="lede">I help businesses grow their online presence through strategic link building, off-page SEO, digital PR and authority growth. You talk to me directly from the first audit to the final report.</p>
+    <p class="lede">I'm an SEO specialist and link building expert with more than seven years of hands-on experience. In that time I've completed 1,422+ projects for 673+ clients.</p>
+    <p class="teaser-more">My focus is the part of SEO that is hardest to fake: earning links, mentions and authority from sites that matter. Today that work covers AI answers as well as Google rankings. You talk to me directly from the first audit to the final report.</p>
     <div class="skills">${d.skills.slice(0, 6).map((s) => `<span>${tick}${s}</span>`).join("")}</div>
     <div class="teaser-foot">${more(link("about"), "More about me")}${socialRow()}</div>
   </div>
@@ -178,9 +179,13 @@ ${pageHero(["about"], `Hi, I'm <span class="hl">Bilal Rasheed</span>`, "An SEO s
   </aside>
   <div class="about-main">
     <div class="card bio rv" style="--i:1">
-      <h2>What I <span class="hl">do</span></h2>
-      <p>I help businesses grow their online presence through strategic link building, off-page SEO, digital PR and authority growth. I care about results that hold their value: relevant sites, real audiences and anchors that read naturally.</p>
-      <p>Search is changing, so my work now covers AI answers as well as classic rankings. The goal stays the same: when someone looks for what you offer, they find you.</p>
+      <h2>My <span class="hl">story</span></h2>
+      <p>I've worked in SEO for more than seven years, and most of that time has gone into the part of SEO that is hardest to fake: earning links and authority. Over those years I've completed 1,422+ projects for 673+ clients.</p>
+      <p>I care about results that hold their value. That means relevant sites, real audiences and anchor text that reads naturally, never shortcuts that work this month and cost you rankings in the next update.</p>
+      <p>Search is changing, so my work now covers AI answers as well as classic rankings: GEO, AEO and the structured content that assistants like ChatGPT and Google's AI Overviews pick up. The goal stays the same. When someone looks for what you offer, they find you.</p>
+      <h3 class="bio-sub">How I work</h3>
+      <p>Every project follows the same steps: an audit of your site and links, a plan you approve, the work itself, and a report you can check line by line. You deal with me directly, not an account manager.</p>
+      <p class="bio-fiverr">You can also hire me on Fiverr, where I work as <a href="https://www.fiverr.com/theseoguru1" target="_blank" rel="me noopener">theseoguru1</a>.</p>
       <div class="skills" aria-label="Core skills">${d.skills.map((s) => `<span>${tick}${s}</span>`).join("")}</div>
     </div>
     <div class="grid3 principles">${d.principles.map((p, i) => `<div class="card service rv" style="--i:${i}"><span class="tile3d">${ico(p[2])}</span><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join("")}</div>
