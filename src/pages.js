@@ -1,5 +1,7 @@
 const d = require("./data");
-const { helpers, esc, ico, tick } = require("./layout");
+const { helpers, esc, ico, tick, socialRow } = require("./layout");
+const num = (n) => n.toLocaleString("en-US");
+const socialCards = () => `<div class="soc-grid">${d.socials.map((s, i) => `<a class="card soc-card tilt rv" style="--i:${i % 3}" href="${s.url}" target="_blank" rel="me noopener"><span class="soc s-${s.tone}"><b>${s.mark}</b></span><span><strong>${s.name}</strong><small>${s.handle}</small></span>${ico("i-arrow")}</a>`).join("")}</div>`;
 
 const head = (h2, p = "", more = "") => `<div class="sec-head rv"><div><h2>${h2}</h2>${p ? `<p>${p}</p>` : ""}</div>${more}</div>`;
 const more = (href, label) => `<a class="more" href="${href}">${label}${ico("i-arrow")}</a>`;
@@ -83,7 +85,7 @@ exports.home = (ctx) => {
     </div>
   </div>
 </div>
-<div class="wrap stats">${d.stats.map((s, i) => `<div class="card stat tilt rv" style="--i:${i}"><span class="tile3d">${ico(s.icon)}</span><div><strong data-count="${s.n}" data-suffix="${s.suffix}">${s.n}${s.suffix}</strong><span>${s.label}</span></div></div>`).join("")}</div>
+<div class="wrap stats">${d.stats.map((s, i) => `<div class="card stat tilt rv" style="--i:${i}"><span class="tile3d">${ico(s.icon)}</span><div><strong data-count="${s.n}" data-suffix="${s.suffix}">${num(s.n)}${s.suffix}</strong><span>${s.label}</span></div></div>`).join("")}</div>
 </section>
 
 <section class="sec"><div class="wrap">
@@ -102,7 +104,7 @@ exports.home = (ctx) => {
     <h2>About <span class="hl">me</span></h2>
     <p class="lede">I help businesses grow their online presence through strategic link building, off-page SEO, digital PR and authority growth. You talk to me directly from the first audit to the final report.</p>
     <div class="skills">${d.skills.slice(0, 6).map((s) => `<span>${tick}${s}</span>`).join("")}</div>
-    ${more(link("about"), "More about me")}
+    <div class="teaser-foot">${more(link("about"), "More about me")}${socialRow()}</div>
   </div>
 </div></section>
 
@@ -116,7 +118,7 @@ ${ctx.posts.length ? `<section class="sec"><div class="wrap">
   ${faq(d.faqs.slice(0, 4))}
 </div></section>
 ${cta(link)}`;
-  const schema = `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Person", name: d.site.name, jobTitle: d.site.tagline, url: d.site.domain + "/", image: d.site.domain + "/assets/bilal.webp", knowsAbout: d.skills })}</script>\n`;
+  const schema = `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Person", name: d.site.name, jobTitle: d.site.tagline, url: d.site.domain + "/", image: d.site.domain + "/assets/bilal.webp", knowsAbout: d.skills, sameAs: d.socials.map((s) => s.url) })}</script>\n`;
   return { path: "", file: "index.html", title: "", description: "Bilal Rasheed is an SEO specialist and link building expert with 7+ years of experience in SEO, GEO, AEO, digital PR and authority growth.", active: "", body, extraHead: schema + faqSchema(d.faqs.slice(0, 4)) };
 };
 
@@ -160,6 +162,7 @@ ${pageHero(["about"], `Hi, I'm <span class="hl">Bilal Rasheed</span>`, "An SEO s
       <div><dt>Focus</dt><dd>Link building, off-page SEO, digital PR</dd></div>
       <div><dt>Works on</dt><dd>One-off projects and monthly campaigns</dd></div>
       <div><dt>Email</dt><dd>${d.site.email}</dd></div>
+      <div class="fact-wide"><dt>Find me on</dt><dd>${socialRow("socials-sm")}</dd></div>
     </dl>
   </aside>
   <div class="about-main">
@@ -172,7 +175,7 @@ ${pageHero(["about"], `Hi, I'm <span class="hl">Bilal Rasheed</span>`, "An SEO s
     <div class="grid3 principles">${d.principles.map((p, i) => `<div class="card service rv" style="--i:${i}"><span class="tile3d">${ico(p[2])}</span><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join("")}</div>
   </div>
 </div>
-<div class="wrap stats">${d.stats.map((s, i) => `<div class="card stat tilt rv" style="--i:${i}"><span class="tile3d">${ico(s.icon)}</span><div><strong data-count="${s.n}" data-suffix="${s.suffix}">${s.n}${s.suffix}</strong><span>${s.label}</span></div></div>`).join("")}</div>
+<div class="wrap stats">${d.stats.map((s, i) => `<div class="card stat tilt rv" style="--i:${i}"><span class="tile3d">${ico(s.icon)}</span><div><strong data-count="${s.n}" data-suffix="${s.suffix}">${num(s.n)}${s.suffix}</strong><span>${s.label}</span></div></div>`).join("")}</div>
 </section>
 ${cta(link)}`;
   return { path: "about", file: "about.html", title: "About Bilal Rasheed", description: "About Bilal Rasheed, an SEO specialist and link building expert with 7+ years of experience.", active: "about", body, type: "profile" };
@@ -190,6 +193,7 @@ ${pageHero(["contact"], `Let's grow your website <span class="hl">together</span
   </div>
   ${form()}
 </div></div></section>
+<section class="sec"><div class="wrap">${head(`My official <span class="hl">accounts</span>`, "Message me wherever you already are.")}${socialCards()}</div></section>
 <section class="sec"><div class="wrap">${head(`Before you <span class="hl">write</span>`)}${faq(d.faqs.slice(3).concat(d.faqs.slice(0, 2)))}</div></section>`;
   return { path: "contact", file: "contact.html", title: "Contact", description: "Contact Bilal Rasheed about SEO, link building, digital PR and authority growth.", active: "contact", body };
 };

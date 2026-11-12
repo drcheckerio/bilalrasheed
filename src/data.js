@@ -12,6 +12,15 @@ exports.site = {
   formKey: "",
 };
 
+// Official accounts. `mark` is the short text shown on the icon tile.
+exports.socials = [
+  { name: "LinkedIn", handle: "in/mbilalrasheed", url: "https://www.linkedin.com/in/mbilalrasheed/", mark: "in", tone: "blue" },
+  { name: "Fiverr", handle: "theseoguru1", url: "https://www.fiverr.com/theseoguru1", mark: "fi", tone: "green" },
+  { name: "X", handle: "@mbilal_rasheed", url: "https://x.com/mbilal_rasheed", mark: "X", tone: "ink" },
+  { name: "Facebook", handle: "mrbilalrasheed", url: "https://www.facebook.com/mrbilalrasheed/", mark: "f", tone: "sky" },
+  { name: "Instagram", handle: "@mbilal_rasheed", url: "https://www.instagram.com/mbilal_rasheed/", mark: "ig", tone: "pink" },
+];
+
 exports.nav = [
   { label: "Home", href: "", icon: "i-home", tone: "blue" },
   { label: "Services", href: "services", icon: "i-layers", tone: "violet" },
@@ -23,9 +32,9 @@ exports.nav = [
 
 exports.stats = [
   { n: 7, suffix: "+", label: "Years experience", icon: "i-cal" },
-  { n: 500, suffix: "+", label: "Projects completed", icon: "i-layers" },
+  { n: 1422, suffix: "+", label: "Projects completed", icon: "i-layers" },
   { n: 100, suffix: "K+", label: "Backlinks built", icon: "i-link" },
-  { n: 300, suffix: "+", label: "Happy clients", icon: "i-users" },
+  { n: 673, suffix: "+", label: "Clients worked with", icon: "i-users" },
 ];
 
 // Service groups shown on the Services page. `home: true` puts a card on the homepage.

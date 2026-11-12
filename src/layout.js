@@ -1,4 +1,6 @@
-const { site, nav, services } = require("./data");
+const { site, nav, services, socials } = require("./data");
+
+const socialRow = (cls = "") => `<div class="socials ${cls}">${socials.map((s) => `<a class="soc s-${s.tone}" href="${s.url}" target="_blank" rel="me noopener" aria-label="${s.name}: ${s.handle}" title="${s.name}"><b>${s.mark}</b></a>`).join("")}</div>`;
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const ico = (id, cls = "ico") => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
@@ -124,6 +126,7 @@ ${body}
     <div class="foot-brand">
       <a class="logo logo-chip" href="${link("")}"><img src="${asset("logo.webp")}" alt="${site.name}" width="720" height="136" loading="lazy"></a>
       <p>SEO, link building and authority growth for brands that want to be found.</p>
+      ${socialRow()}
     </div>
     <nav aria-label="Footer">${nav.map((n) => `<a href="${link(n.href)}">${n.label}</a>`).join("")}</nav>
     <a class="foot-mail" href="${link("contact")}">${ico("i-mail")}${site.email}</a>
@@ -137,4 +140,4 @@ ${body}
 `;
 }
 
-module.exports = { page, helpers, esc, ico, tick };
+module.exports = { page, helpers, esc, ico, tick, socialRow };

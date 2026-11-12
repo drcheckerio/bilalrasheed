@@ -19,7 +19,7 @@
     $$("[data-count]",el).forEach(function(n){
       var end=+n.dataset.count, suf=n.dataset.suffix||"", t0=null;
       function step(t){ if(!t0)t0=t; var p=Math.min((t-t0)/1300,1), e=1-Math.pow(1-p,3);
-        n.textContent=Math.round(end*e)+suf; if(p<1)requestAnimationFrame(step); }
+        n.textContent=Math.round(end*e).toLocaleString("en-US")+suf; if(p<1)requestAnimationFrame(step); }
       requestAnimationFrame(step);
     });
   }
