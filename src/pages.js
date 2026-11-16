@@ -103,7 +103,7 @@ exports.home = (ctx) => {
 </div></section>
 
 <section class="sec"><div class="wrap about-teaser">
-  <div class="card me rv tilt"><img src="${asset("bilal.webp")}" alt="" width="847" height="1200" loading="lazy"></div>
+  <div class="card me rv tilt"><img src="${asset("bilal-rasheed-seo-specialist.webp")}" alt="Bilal Rasheed, SEO specialist" width="900" height="900" loading="lazy"></div>
   <div class="rv" style="--i:1">
     <h2>About <span class="hl">me</span></h2>
     <p class="lede">I'm an SEO specialist and link building expert with more than seven years of hands-on experience. In that time I've completed 1,422+ projects for 673+ clients.</p>
@@ -167,7 +167,7 @@ exports.about = (ctx) => {
 ${pageHero(["about"], `Hi, I'm <span class="hl">Bilal Rasheed</span>`, "An SEO specialist and link building expert with 7+ years of experience helping websites earn authority.")}
 <section class="sec sec-tight"><div class="wrap about">
   <aside class="card panel rv">
-    <div class="me me-lg"><img src="${asset("bilal.webp")}" alt="Bilal Rasheed" width="847" height="1200"></div>
+    <div class="me me-lg"><img src="${asset("bilal-rasheed-seo-specialist.webp")}" alt="Bilal Rasheed, SEO specialist and link building expert" width="900" height="900"></div>
     <dl class="facts">
       <div><dt>Role</dt><dd>${d.site.tagline}</dd></div>
       <div><dt>Experience</dt><dd>7+ years in SEO</dd></div>

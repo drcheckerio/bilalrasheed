@@ -6,7 +6,7 @@ Portfolio and blog for Bilal Rasheed (SEO specialist). Static site, built by `bu
 - `src/data.js`: all content (services, stats, case studies, FAQs, nav) and site settings.
 - `src/layout.js`: shared head, header, menu, footer, icon sprite.
 - `src/pages.js`: page bodies (home, services, case-studies, about, blog, contact, post, 404).
-- `assets/`: `site.css`, `site.js`, `logo.webp`, `bilal.webp`, `favicon.png`.
+- `assets/`: `site.css`, `site.js`, `logo.webp`, `favicon.png`, `bilal.webp` (hero cutout), `bilal-rasheed-seo-specialist.webp` (About photo).
 - `posts/*.md`: blog posts. File name is the URL slug.
 - `dist/`: build output, not committed.
 
