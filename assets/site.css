@@ -139,6 +139,7 @@ h1 .hl path{fill:none;stroke:var(--blue);stroke-width:5;stroke-linecap:round;str
 
 .scene{position:relative;width:100%;max-width:540px;aspect-ratio:1/.98;margin-inline:auto;perspective:1300px}
 .stage{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(calc(4deg + var(--rx,0deg))) rotateY(calc(-9deg + var(--ry,0deg)));will-change:transform}
+.photo{position:absolute;inset:0;transform-style:preserve-3d}
 .plate{position:absolute;inset:17% 10% 3% 14%;border-radius:64px;background:linear-gradient(150deg,#5a8dff,var(--blue) 45%,var(--blue-deep));transform:translateZ(-60px) rotate(3deg);box-shadow:inset 0 3px 0 rgba(255,255,255,.4),inset 0 -22px 40px rgba(5,25,110,.4),0 60px 70px -34px rgba(31,94,255,.6)}
 .plate::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 24% 16%,rgba(255,255,255,.4),transparent 42%)}
 .ring{position:absolute;inset:8% 2% -2% 6%;border-radius:50%;border:2px dashed rgba(31,94,255,.22);transform:translateZ(-110px)}
@@ -426,9 +427,15 @@ footer{margin-top:60px;background:var(--navy);color:#b9c5e6;padding:38px 0 22px}
   .audit{grid-template-columns:1fr}
   .contact{padding:26px 20px;border-radius:28px}
   .band{padding:26px 22px}
-  .chip{font-size:13px;padding:10px 12px}
-  .chip .tile{width:32px;height:32px;border-radius:10px}
-  .chip-b,.chip-d{right:3%}.chip-a,.chip-c{left:3%}
+  /* phone: photo stands alone, labels sit in a tidy row underneath it */
+  .scene{aspect-ratio:auto;perspective:none;max-width:420px}
+  .stage{position:relative;inset:auto;transform:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .photo{position:relative;inset:auto;grid-column:1/-1;aspect-ratio:1/1.04;transform-style:flat}
+  .plate,.ring,.cut,.orb{transform:none}
+  .chip{position:static;transform:none;animation:none;font-size:14px;padding:11px 13px;box-shadow:var(--clay)}
+  .chip .tile{width:34px;height:34px;border-radius:11px}
+  .chip-c{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px 16px}
+  .chip-d{display:none}
   .sugg small{display:none}
   .foot{flex-direction:column;align-items:flex-start}
 }

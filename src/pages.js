@@ -64,10 +64,12 @@ exports.home = (ctx) => {
   </div>
   <div class="scene rv" id="scene" style="--i:2">
     <div class="stage" id="stage">
-      <div class="plate"></div>
-      <div class="ring"></div>
-      <div class="cut"><img src="${asset("bilal.webp")}" alt="Bilal Rasheed, SEO specialist" width="847" height="1200" fetchpriority="high"></div>
-      <div class="orb"></div>
+      <div class="photo">
+        <div class="plate"></div>
+        <div class="ring"></div>
+        <div class="cut"><img src="${asset("bilal.webp")}" alt="Bilal Rasheed, SEO specialist" width="847" height="1200" fetchpriority="high"></div>
+        <div class="orb"></div>
+      </div>
       <div class="chip chip-a" aria-hidden="true"><span class="tile">${ico("i-search")}</span><div>SEO Growth<span class="mini"><u></u><u></u><u></u><u></u><u></u></span></div></div>
       <div class="chip chip-b" aria-hidden="true"><span class="tile">${ico("i-link")}</span>Link<br>Building</div>
       <div class="chip chip-c" aria-hidden="true"><p>${tick}Higher rankings</p><p>${tick}More traffic</p><p>${tick}Authority growth</p></div>
